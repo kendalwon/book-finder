@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Oleo+Script&family=Roboto&display=swap');
+
+body {
+  margin: 0;
+  background-color: #708b16;
+  font-family: 'Roboto', sans-serif;
+}
+
+.header {
+  font-family: 'Oleo Script', cursive;
+  text-align: center;
+  color: #f2fccf;
+  font-size: 30px;
+  text-shadow: 2px 2px rgba(0,0,0,.4);
+}
+
+.heading {
+  margin-bottom: 20px;
+}
+
+.finderForm {
+  position: relative;
+  text-align: center;
+}
+
+.formInput {
+  font-family: 'Montserrat', sans-serif;
+  width: 400px;
+  height: 40px;
+  padding: 0 40px 0 40px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  font-size: 16px;
+  text-align: center;
+  user-select: none;
+}
+.formInput:focus {
+  outline: none;
+}
+
+.button {
+  position: relative;
+  top: 4px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 24px;
+  color: #fcd676;
+  cursor: pointer;
+}
+.button:focus {
+  outline: none;
+}
+
+.closeButton, .emptyButton {
+  left: 40px;
+}
+
+.searchButton {
+  right: 40px;
+}
+
+.emptyButton {
+  color: white;
+  cursor: text;
+}
