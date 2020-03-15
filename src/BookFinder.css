@@ -36,6 +36,15 @@ body {
 }
 .formInput:focus {
   outline: none;
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  outline: none;
+  box-shadow: 0 0 0px 1000px white inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
 }
 
 .button {
@@ -48,6 +57,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   color: #fcd676;
+  background: transparent;
   cursor: pointer;
 }
 .button:focus {
@@ -63,6 +73,24 @@ body {
 }
 
 .emptyButton {
-  color: white;
+  color: transparent;
   cursor: text;
+}
+
+.bookCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  
+}
+
+@media only screen and (max-width: 850px) {
+  .bookCards {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .formInput {
+    width: 300px;
+  }
 }
