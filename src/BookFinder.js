@@ -13,50 +13,49 @@ class BookFinder extends React.Component {
       searchTerm: '',
       volumes: null
     };
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
-    this.clearForm = this.clearForm.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onFocus(e) { 
+  onFocus = (e) => { 
     e.target.placeholder = '';
   }
 
-  onBlur(e) {
+  onBlur = (e) => {
     e.target.placeholder = 'Type author, book title, subject...';
   }
 
-  clearForm() {
+  clearForm = () => {
     const searchTerm = '';
     const volumes = null;
     this.setState({ searchTerm, volumes })
   }
 
-  onChange(e) {
+  onChange = (e) => {
     const searchTerm = e.target.value;
     this.setState({ searchTerm });
   }
 
-  onSubmit(e) {
+  onSubmit = (e) => {
     e.preventDefault();
     console.log('searching');
     this.bookSearch();
   }
 
-  bookSearch() {
+  bookSearch = () => {
     const searchTerm = this.state.searchTerm;
     const url = 'https://www.googleapis.com/books/v1/volumes?q=' + searchTerm + '&key=' + googleApiKey + '&country=us';
     fetch(url)
       .then(response => response.json())
-      .then(json => this.setState({
-        volumes: json.items
-      }))
+      .then(json => {
+        console.log(json);
+        this.setState({
+          volumes: json.items
+        });
+      })
       .catch(error => console.log(error));
   }
 
   render() {
-    console.log(JSON.stringify(this.state.volumes));
+    console.log(this.state.volumes);
     return (
       <div className='bookFinder'>
         <div className='header'>
@@ -101,7 +100,9 @@ class BookFinder extends React.Component {
                   title={volume.volumeInfo.title}
                   link={volume.volumeInfo.canonicalVolumeLink}
                   publisher={volume.volumeInfo.publisher}
-                  image={volume.volumeInfo.imageLinks.thumbnail}
+                  image={volume.volumeInfo.imageLinks === undefined
+                    ? "./images/book.jpg"
+                    : `${volume.volumeInfo.imageLinks.thumbnail}`}
                   author={volume.volumeInfo.authors}
                   date={volume.volumeInfo.publishedDate}
                 />
@@ -109,7 +110,6 @@ class BookFinder extends React.Component {
             })}
           </div>
         ) : null}
-
       </div>
     );
   }
