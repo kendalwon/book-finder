@@ -1,5 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import BookFinder from './BookFinder';
+import { render } from 'react-dom';
+import BookFinder from './components/BookFinder/BookFinder';
 
-ReactDOM.render(<BookFinder />, document.getElementById('root'));
+render(
+  <BookFinder />, 
+  document.getElementById('root')
+);
